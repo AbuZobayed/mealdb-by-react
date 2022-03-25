@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Meal from '../Meal/Meal';
 import './Foods.css'
 
 const Foods = () => {
@@ -9,10 +10,17 @@ const Foods = () => {
           .then(res => res.json())
           .then(data => setMeals(data.meals));
       }, []);
+
     return (
         <div className='foods-container'>
             <div className="meals-container">
-               <h2>Fooods : {meals.length}</h2>
+               {
+                   meals.map(meal => <Meal 
+                    key={meal.idMeal}
+                    meal={meal}
+                    ></Meal>)
+                  
+               }
                 
             </div>
 
